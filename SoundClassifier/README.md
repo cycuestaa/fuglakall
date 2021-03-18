@@ -1,4 +1,4 @@
-# A Simple Sound Classifier
+# A Simple Sound Classifier ..... USED [THIS](https://heartbeat.fritz.ai/building-a-sound-classification-ios-application-using-ai-1655506d1763) && [restful-api](https://www.appcoda.com/restful-api-tutorial-how-to-upload-files-to-server/)
 > Sound Classifier Using Turicreate and CoreML
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hKPoEPVP8jGcfC5_mKk9cTWI-Mxvy4zV)
@@ -11,7 +11,7 @@ We'll create an iOS application that recognize sounds that are listed in the ESC
 ### Final result - Video with sound
 [Video with sound - Vimeo](https://vimeo.com/355820387)
 
-## Data preparation
+## Data preparation (IGNORE FOR US)
 
 I'm using the ESC-50 dataset.
 
