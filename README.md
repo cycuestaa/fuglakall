@@ -24,3 +24,13 @@ Our awesome app for mobile computing.
 - - App provides feedback to users on how to improve performance (uncover mic, call too faint, etc.)
 
 
+## SERVER
+test_mp3 = open('<file path>.mp3', 'rb')
+send_files = {'audioFile':('test_name.mp3', test_mp3, 'audio/mpeg')}
+r = requests.post(url, files=send_files)
+print(r.status_code)
+print(r.content)
+  
+where url = http://45.33.19.27:5000/predict
+you can test if the server is working by going to http://45.33.19.27:5000/hello
+
