@@ -15,26 +15,35 @@
 @property (nonatomic, strong) IBOutlet UIButton* playButton;
 @property (nonatomic, strong) IBOutlet UIButton* recordPauseButton;
 
+@property (strong, nonatomic) id outputURL;
+@property (strong, nonatomic) id recSetting;
+
+- (void)recordSwift;
+- (void)customOutputFileURL;
+- (void)customRecordSettings;
+
+
 @end
 
 @implementation CustomViewController
 
 
-- (void)viewDidLoad
+- (void)customOutputFileURL
 {
     //[super viewDidLoad];
-    
-    // Disable Stop/Play button when application launches
-    [_stopButton setEnabled:NO];
-    [_playButton setEnabled:NO];
-    
+
     // Set the audio file
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                @"MyAudioMemo.m4a",
                                nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-    
+    self.outputURL = outputFileURL;
+}
+
+
+- (void)customRecordSettings
+{
     // Setup audio session
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -45,14 +54,17 @@
     [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
     [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
     [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
-    
+    self.recSetting = recordSetting;
+}
+
+- (void)recordSwift
+{
     // Initiate and prepare the recorder
-    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
+    recorder = [[AVAudioRecorder alloc] initWithURL:self.outputURL settings:self.recSetting error:NULL];
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
 }
-
 
 - (IBAction)recordPauseTapped:(id)sender {
     // Stop the audio player before recording

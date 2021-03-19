@@ -30,6 +30,7 @@ class RestManager {
                 withHttpMethod httpMethod: HttpMethod,
                 completion: @escaping(_ result: Results, _ failedFiles: [String]?) -> Void) {
      
+        print()
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let targetURL = self?.addURLQueryParameters(toURL: url)
             print("upload in restman swift url:")

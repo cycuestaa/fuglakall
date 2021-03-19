@@ -13,6 +13,17 @@ import UIKit
 
 class ViewController: UIViewController, AVCaptureAudioDataOutputSampleBufferDelegate {
     
+    @IBOutlet var recordButton: UIButton!
+    @IBOutlet var stopRedButton: UIButton!
+    @IBOutlet var stopGrayButton: UIButton!
+    @IBOutlet var listenButton: UIButton!
+    @IBOutlet var loadBirdButton: UIButton!
+    @IBOutlet var recordingLabel: UILabel!
+    @IBOutlet var instrLabel: UILabel!
+    
+    @IBOutlet var activityload: UIActivityIndicatorView!
+    
+    
     let rest = RestManager()
     let server_host = "http://45.33.19.27:5000/hello"
     let server_post = "http://45.33.19.27:5000/predict"
@@ -31,18 +42,168 @@ class ViewController: UIViewController, AVCaptureAudioDataOutputSampleBufferDele
 
     var instanceOfVC = CustomViewController()
     
+    var isReady: Bool = false
+    var species = "amecro"
+    var infoCornellUrl = "https://ebird.org/species/grhowl"
+    var isRecording: Bool = false
+     //timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {_ in}
+    
+    // Button title string.
+    //let BTN_TITLE_START = "Start"
+    //let BTN_TITLE_STOP = "Stop"
+    
+    // Button tag values.
+   // let TAG_ONE = 1
+   // let TAG_TWO = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
-        //self.label.text = "No matching"
-        //setupLabel()
-        //getInference()
-        instanceOfVC.viewDidLoad()
+        
+        // setupLabel()
+        // getInference()
+        instanceOfVC.customOutputFileURL()
+        instanceOfVC.recordSwift()
+        instanceOfVC.customRecordSettings()
+        self.activityload.hidesWhenStopped = true
+        self.activityload.stopAnimating()
+        
+        // instanceOfVC.
         print("instance of VC view did load")
         uploadSingleFile()
-        //uploadMultipleFiles()
+       // Set button1's tag value.
+        loadBirdButton.setTitle("Show Me Bird Caller ID!!", for: UIControl.State.normal)
+        // Set button1's touchDown event process function.
+        loadBirdButton.addTarget(self, action: #selector(processBtn), for: UIControl.Event.touchDown)
+        
+        loadBirdButton.addTarget(self, action: #selector(pploaded), for: UIControl.Event.valueChanged)
+        
+        
+    
+        
+        
     }
     
+    var runtime = "0"
+    var startTime = TimeInterval()
+    
+    @objc func updateTime() {
+
+        var currentTime = NSDate.timeIntervalSinceReferenceDate
+
+        //Find the difference between current time and start time.
+
+        var elapsedTime: TimeInterval = currentTime - startTime
+
+        //calculate the minutes in elapsed time.
+
+        let minutes = UInt8(elapsedTime / 60.0)
+
+            elapsedTime -= (TimeInterval(minutes) * 60)
+
+        //calculate the seconds in elapsed time.
+
+        let seconds = UInt8(elapsedTime)
+
+        elapsedTime -= TimeInterval(seconds)
+
+        //find out the fraction of milliseconds to be displayed.
+
+        let fraction = UInt8(elapsedTime * 100)
+
+        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        let strFraction = String(format: "%02d", fraction)
+
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+
+        runtime = "\(strMinutes):\(strSeconds):\(strFraction)"
+
+        self.instrLabel.text = "Recording... " + runtime
+        
+    }
+      
+    var timer = Timer()
+    
+    /* This function will process button event. */
+    @objc func processBtn(_ sender: UIButton) {
+        
+        // Get button tag property value.
+        //let btnTag = sender.tag
+        self.isReady = false
+        self.activityload.startAnimating()
+        sender.setTitle("Looking through our call book...", for: UIControl.State.normal)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+            
+            sender.setTitleColor(UIColor.green, for: UIControl.State.normal)
+            self.pploaded()
+        }
+        
+        
+        // Get button title text string.
+        //let btnTitleText = sender.titleLabel?.text
+        //if(btnTitleText == self.BTN_TITLE_START){
+            //if(btnTag == TAG_ONE){
+              //  btnTag == TAG_ONE
+            //}
+            //sender.setTitle(self.BTN_TITLE_STOP, for: UIControl.State.normal)
+            //if(btnTag == TAG_TWO){
+              //  activityload.stopAnimating()
+           // }
+            //sender.setTitle(self.BTN_TITLE_START, for: UIControl.State.normal)
+    }
+    
+    @objc func pploaded() {
+        self.activityload.stopAnimating()
+        performSegue(withIdentifier: "segue_res", sender: nil)
+    }
+
+    @IBAction func didTapRecord(_ sender: UIButton) {
+        isRecording = !isRecording
+        
+        print(self.recordButton.state)
+        if !isRecording {
+            self.recordButton.setImage(UIImage(named: "mic-orange.png"), for: .normal)
+            //self.recordButton.setTitle("RECORD", for: self.recordButton.state)
+            self.stopRedButton.isHidden = true
+            self.stopGrayButton.isHidden = false
+            self.recordingLabel.text = "Click button to start a new recording."
+            self.listenButton.isHidden = false
+            self.loadBirdButton.isHidden = false
+            timer.invalidate()
+            timer == nil
+        } else {
+            //self.recordButton.state = 2
+            runtime = ""
+            self.recordButton.setImage(UIImage(named: "mic-green.png"), for: .normal)
+            //self.recordButton.setTitle("RECORDING...", for: self.recordButton.state)
+            self.stopRedButton.isHidden = false
+            self.stopGrayButton.isHidden = !self.stopGrayButton.isHidden
+            self.recordingLabel.text = "Recording call..."
+            self.listenButton.isHidden = true
+            self.loadBirdButton.isHidden = true
+            
+            if !timer.isValid {
+                let aSelector : Selector = #selector(updateTime)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate
+            }
+        }
+    }
+    
+    @IBAction func didTapStopRed(_ sender: Any) {
+        if !stopRedButton.isHidden {
+            self.recordButton.setImage(UIImage(named: "mic-orange.png"), for: .normal)
+            //self.recordButton.setTitle("RECORD", for: self.recordButton.state)
+            self.stopRedButton.isHidden = true
+            self.stopGrayButton.isHidden = false
+            self.recordingLabel.text = "Click button to start a new recording"
+            self.listenButton.isHidden = false
+            self.loadBirdButton.isHidden = false
+        }
+    }
     
     
     ///////////////////////////////////////////////////////////
