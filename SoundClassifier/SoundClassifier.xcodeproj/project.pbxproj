@@ -35,15 +35,31 @@
 		6C0D071C231185EC0055A9AB /* rooster_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C0D0704231185EC0055A9AB /* rooster_1.wav */; };
 		6C0D071D231185EC0055A9AB /* rooster_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C0D0705231185EC0055A9AB /* rooster_3.wav */; };
 		6C0D071E231185EC0055A9AB /* rooster_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C0D0706231185EC0055A9AB /* rooster_2.wav */; };
-		A367021326013AA200594E96 /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0D06D0231171710055A9AB /* libAudioPreprocessing.dylib */; };
+		A360BB0826033F3B00D4CC73 /* libAudioPreprocessing.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0D06D0231171710055A9AB /* libAudioPreprocessing.dylib */; };
+		A360BB0926033F3C00D4CC73 /* libAudioPreprocessing.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 6C0D06D0231171710055A9AB /* libAudioPreprocessing.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A360BB0B2603410C00D4CC73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A360BB0A2603410C00D4CC73 /* AppDelegate.swift */; };
+		A360BB0E260366CE00D4CC73 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A360BB0D260366CE00D4CC73 /* Results.swift */; };
 		A367021726028A2600594E96 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367021626028A2600594E96 /* RestManager.swift */; };
 		A367021926028A4F00594E96 /* Sample Files in Resources */ = {isa = PBXBuildFile; fileRef = A367021826028A4F00594E96 /* Sample Files */; };
 		A367021D2602DB6600594E96 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A367021C2602DB6600594E96 /* SceneDelegate.m */; };
 		A36702202602DDE300594E96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A367021F2602DDE300594E96 /* AppDelegate.m */; };
 		A36702252602E95A00594E96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36702232602E95A00594E96 /* Main.storyboard */; };
 		A36702472602FFCE00594E96 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A36702462602FFCE00594E96 /* CustomViewController.m */; };
-		A367024D26030A9700594E96 /* libAudioPreprocessing.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A367024C26030A9700594E96 /* libAudioPreprocessing.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A360BAFF2603231E00D4CC73 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A360BB0926033F3C00D4CC73 /* libAudioPreprocessing.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6C0D06AA23115F390055A9AB /* SoundClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +93,10 @@
 		6C0D0704231185EC0055A9AB /* rooster_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rooster_1.wav; sourceTree = "<group>"; };
 		6C0D0705231185EC0055A9AB /* rooster_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rooster_3.wav; sourceTree = "<group>"; };
 		6C0D0706231185EC0055A9AB /* rooster_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rooster_2.wav; sourceTree = "<group>"; };
+		A360BAF72603222B00D4CC73 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAudioPreprocessing.dylib; path = "../../../Downloads/21-MobileComp/libAudioPreprocessing/x86_64/libAudioPreprocessing.dylib"; sourceTree = "<group>"; };
+		A360BAFC2603231E00D4CC73 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAudioPreprocessing.dylib; path = "../../../Downloads/21-MobileComp/libAudioPreprocessing 2/arm64/libAudioPreprocessing.dylib"; sourceTree = "<group>"; };
+		A360BB0A2603410C00D4CC73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A360BB0D260366CE00D4CC73 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		A36702092601053500594E96 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAudioPreprocessing.dylib; path = "../../../Downloads/21-MobileComp/libAudioPreprocessing/arm64/libAudioPreprocessing.dylib"; sourceTree = "<group>"; };
 		A3670215260289FF00594E96 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Server; path = "../../../../../Volumes/My Passport 1/Scratch/restful-file-upload-starter/Server"; sourceTree = "<group>"; };
 		A367021626028A2600594E96 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
@@ -89,7 +109,6 @@
 		A36702242602E95A00594E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A36702452602FFCE00594E96 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		A36702462602FFCE00594E96 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
-		A367024C26030A9700594E96 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libAudioPreprocessing.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A367024D26030A9700594E96 /* libAudioPreprocessing.dylib in Frameworks */,
+				A360BB0826033F3B00D4CC73 /* libAudioPreprocessing.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +130,7 @@
 				6C0D06AC23115F390055A9AB /* SoundClassifier */,
 				6C0D06AB23115F390055A9AB /* Products */,
 				A36702082601053500594E96 /* Frameworks */,
+				A360BAF526030F3D00D4CC73 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +145,7 @@
 		6C0D06AC23115F390055A9AB /* SoundClassifier */ = {
 			isa = PBXGroup;
 			children = (
+				A360BB0A2603410C00D4CC73 /* AppDelegate.swift */,
 				A36702452602FFCE00594E96 /* CustomViewController.h */,
 				A36702462602FFCE00594E96 /* CustomViewController.m */,
 				A367021E2602DDE300594E96 /* AppDelegate.h */,
@@ -141,10 +162,10 @@
 				6C0D06BF23115F6E0055A9AB /* SoundClassification.mlmodel */,
 				6C0D06B423115F3B0055A9AB /* Assets.xcassets */,
 				6C0D06B623115F3B0055A9AB /* LaunchScreen.storyboard */,
-				A367024C26030A9700594E96 /* libAudioPreprocessing.dylib */,
 				A36702232602E95A00594E96 /* Main.storyboard */,
 				6C0D06B923115F3B0055A9AB /* Info.plist */,
 				A367021A2602DB6400594E96 /* SoundClassifier-Bridging-Header.h */,
+				A360BB0D260366CE00D4CC73 /* Results.swift */,
 			);
 			path = SoundClassifier;
 			sourceTree = "<group>";
@@ -201,9 +222,19 @@
 			path = rooster;
 			sourceTree = "<group>";
 		};
+		A360BAF526030F3D00D4CC73 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				6C0D06D0231171710055A9AB /* libAudioPreprocessing.dylib */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		A36702082601053500594E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A360BAFC2603231E00D4CC73 /* libAudioPreprocessing.dylib */,
+				A360BAF72603222B00D4CC73 /* libAudioPreprocessing.dylib */,
 				A36702092601053500594E96 /* libAudioPreprocessing.dylib */,
 			);
 			name = Frameworks;
@@ -219,6 +250,7 @@
 				6C0D06A623115F390055A9AB /* Sources */,
 				6C0D06A723115F390055A9AB /* Frameworks */,
 				6C0D06A823115F390055A9AB /* Resources */,
+				A360BAFF2603231E00D4CC73 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -236,7 +268,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "M'haimdat omar";
 				TargetAttributes = {
 					6C0D06A923115F390055A9AB = {
@@ -272,7 +304,6 @@
 				A367021926028A4F00594E96 /* Sample Files in Resources */,
 				6C0D0707231185EC0055A9AB /* sneezing_1_converted.wav in Resources */,
 				6C0D0709231185EC0055A9AB /* sneezing_3.wav in Resources */,
-				A367021326013AA200594E96 /* libAudioPreprocessing.dylib in Resources */,
 				6C0D0711231185EC0055A9AB /* dog_3.wav in Resources */,
 				6C0D06B823115F3B0055A9AB /* LaunchScreen.storyboard in Resources */,
 				6C0D0710231185EC0055A9AB /* dog_2.wav in Resources */,
@@ -309,8 +340,10 @@
 			files = (
 				A36702472602FFCE00594E96 /* CustomViewController.m in Sources */,
 				6C0D06C023115F6E0055A9AB /* SoundClassification.mlmodel in Sources */,
+				A360BB0E260366CE00D4CC73 /* Results.swift in Sources */,
 				A367021726028A2600594E96 /* RestManager.swift in Sources */,
 				A36702202602DDE300594E96 /* AppDelegate.m in Sources */,
+				A360BB0B2603410C00D4CC73 /* AppDelegate.swift in Sources */,
 				A367021D2602DB6600594E96 /* SceneDelegate.m in Sources */,
 				6C0D06B023115F390055A9AB /* ViewController.swift in Sources */,
 			);
@@ -364,6 +397,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -425,6 +459,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
